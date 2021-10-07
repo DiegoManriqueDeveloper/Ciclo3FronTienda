@@ -1,0 +1,117 @@
+@charset "ISO-8859-1";
+.titulo{
+	background:#0000;
+}
+  div{
+ 
+  font-style: italic;
+
+  
+	background: transparent;
+	color:purple;
+	
+	width: 100%;
+   
+    text-align:center;
+    border: 1px solid #fff;
+   
+}
+
+.menu{
+	font-family: arial,helvetica;
+	list-style:none;
+	padding:0;
+	background:#000;
+	width: 100%;
+	max-width: 1000px;
+	margin:auto;
+	text-align:center;
+}
+
+.menu li a{
+	text-decoration:none;
+	color:white;
+	padding:20px;
+	display:block;
+}
+
+.menu li {
+	display:inline-block;
+	text-align:center;
+	
+}
+
+.menu li a:hover{
+	background:purple;
+	
+}
+.form-user  {
+ margin-left: 15px;
+  margin-bottom: 20px;
+  background: transparent;
+     width: 100%;
+  margin:auto;
+    border: none;
+}
+.form-user input {
+ margin-left: 12px;
+  margin-bottom: 12px;
+ 
+   width: 200px;
+  height: 30px;  
+    
+    border: 1px solid #fff;
+     box-sizing: border-box;
+     
+  
+}
+
+.form-user butoon {
+ margin-left: 20px;
+  margin-bottom: 12px;
+ 
+   width: 200px;
+  height: 30px;  
+    
+    border: 1px solid #fff;
+     box-sizing: border-box;
+     
+  
+}
+
+
+
+
+.form-user input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: darkgrey;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.form-user input[type="submit"]:hover {
+  cursor: pointer;
+  background: #0657FA;
+  color: #000;
+}
+
+.btn hover {
+  cursor: pointer;
+  background: #0657FA;
+  color: #000;
+}
+
+.form-user a {
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 12px;
+  color: darkgrey;
+}
+
+.form-user a:hover {
+  color: black;
+  
+}

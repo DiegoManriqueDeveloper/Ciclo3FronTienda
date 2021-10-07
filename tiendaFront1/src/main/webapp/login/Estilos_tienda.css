@@ -1,0 +1,236 @@
+@charset "ISO-8859-1";
+<!--  -->
+body.log {
+  margin: 0;         
+  padding: 0;
+  min-height:100vh; 
+  background-image:url(img/moto2.jpg);
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: cover;
+   background-attachment: fixed;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+.login-box {
+  width: 320px;
+  height: 420px;  
+  background: #000;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+}
+
+.login-box .avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+}
+
+.login-box h1 {
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.login-box label {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  display: block;
+}
+
+.login-box input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-box input[type="text"], .login-box input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.login-box input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: darkgrey;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.login-box input[type="submit"]:hover {
+  cursor: pointer;
+  background: #0657FA;
+  color: #000;
+}
+
+.login-box a {
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 20px;
+  color: darkgrey;
+}
+
+.login-box a:hover {
+  color: purple;
+  
+
+}
+
+/*pagina principal*/
+body.principal{
+ background-image:url(img/moto2.jpg);
+ }
+ div{
+ 
+  font-style: italic;
+
+  
+	background: #000;
+	color:purple;
+	
+	width: 100%;
+   
+    text-align:center;
+    border: 1px solid #fff;
+   
+}
+
+.menu{
+	font-family: arial,helvetica;
+	list-style:none;
+	padding:0;
+	background:#000;
+	width: 100%;
+	max-width: 1000px;
+	margin:auto;
+	text-align:center;
+}
+
+.menu li a{
+	text-decoration:none;
+	color:white;
+	padding:20px;
+	display:block;
+}
+
+.menu li {
+	display:inline-block;
+	text-align:center;
+	
+}
+
+.menu li a:hover{
+	background:purple;
+	
+}
+
+/*pagina usuarios*/
+
+
+.form-user  {
+ margin-left: 15px;
+  margin-bottom: 20px;
+  background: transparent;
+     width: 100%;
+  margin:auto;
+    border: none;
+}
+.form-user input {
+ margin-left: 20px;
+  margin-bottom: 12px;
+ 
+   width: 200px;
+  height: 30px;  
+    
+    border: 1px solid #fff;
+     box-sizing: border-box;
+     
+  
+}
+
+.form-user butoon {
+ margin-left: 20px;
+  margin-bottom: 12px;
+ 
+   width: 200px;
+  height: 30px;  
+    
+    border: 1px solid #fff;
+     box-sizing: border-box;
+     
+  
+}
+
+
+
+
+.form-user input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: darkgrey;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.form-user input[type="submit"]:hover {
+  cursor: pointer;
+  background: #0657FA;
+  color: #000;
+}
+
+.btn hover {
+  cursor: pointer;
+  background: #0657FA;
+  color: #000;
+}
+
+.form-user a {
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 50px;
+  color: darkgrey;
+}
+
+.form-user a:hover {
+  color: black;
+  
+ 
+
+}
+ /*pagina usuarios*/
+ 
+ .bodyresult{
+ margin: 0;         
+  padding: 0;
+  min-height:100vh; 
+  background-image:url(img/moto2.jpg);
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: cover;
+   background-attachment: fixed;
+  font-family: sans-serif;
+  height: 100vh;
+ }
+ /*pagina sesultado*/
+ body.result{
+   background: darkgrey;
+ }
