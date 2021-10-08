@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.parser.ParseException;
 
+import tiendaFront1.Modelo.Productos;
+import tiendaFront1.JSON.JSONProducto;
 /**
  * Servlet implementation class DemoServlet
  */
-@WebServlet("/DemoServlet")
+@WebServlet("/ServletProducto")
 public class ServletProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,12 +38,12 @@ public class ServletProducto extends HttpServlet {
 		String listar = request.getParameter("Listar");
 		String agregar = request.getParameter("Agregar");
 		if (agregar != null) {
-			agregarUsuario(request, response);
+			agregarProducto(request, response);
 
 		}
 		if (listar != null) {
 			try {
-				listarUsuarios(request, response);
+				listarProductos(request, response);
 			} catch (ParseException | ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,16 +59,16 @@ public class ServletProducto extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	public void agregarUsuario(HttpServletRequest request, HttpServletResponse response) {
-		Usuarios2 usuario = new Usuarios2();
-		usuario.setNombre_usuario(request.getParameter("nombre"));
-		usuario.setCedula_usuario(Long.parseLong(request.getParameter("cedula")));
-		usuario.setEmail_usuario(request.getParameter("email"));
-		usuario.setUsuario(request.getParameter("usuario"));
-		usuario.setPassword(request.getParameter("password"));
+	public void agregarProducto(HttpServletRequest request, HttpServletResponse response) {
+		Productos producto = new Productos();
+		producto.setCodigo_producto(Long.parseLong(request.getParameter("odigo_producto")));
+		producto.setIvacompra(Double.parseDouble(request.getParameter("ivacompra")));
+		producto.setNombre_producto(request.getParameter("nombre_producto"));
+		producto.setPrecio_compra(Double.parseDouble(request.getParameter("precio_compra")));
+		producto.setPrecio_venta(Double.parseDouble(request.getParameter("precio_venta")));
 		int respuesta = 0;
 		try{
-			respuesta=JSONProducto.postJSON(usuario);
+			respuesta=JSONProducto.postJSON(producto);
 			PrintWriter writer = response.getWriter();
 			if (respuesta == 200) {
 				writer.println(" Registro Agregado!");
@@ -79,10 +81,10 @@ public class ServletProducto extends HttpServlet {
 		};
 	}
 	
-	public void listarUsuarios(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException {
+	public void listarProductos(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException {
 		try {
-			ArrayList<Usuarios2> lista = JSONProducto.getJSON();
-			String pagina = "/resultado.jsp";
+			ArrayList<Productos> lista = JSONProducto.getJSON();
+			String pagina = "/resultadoProductos.jsp";
 			request.setAttribute("lista", lista);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
 			dispatcher.forward(request, response);

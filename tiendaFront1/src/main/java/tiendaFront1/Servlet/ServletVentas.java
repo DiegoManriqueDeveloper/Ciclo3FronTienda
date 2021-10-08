@@ -3,6 +3,7 @@ package tiendaFront1.Servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.parser.ParseException;
 
+import tiendaFront1.JSON.JSONVentas;
+import tiendaFront1.Modelo.Ventas;
+
 /**
  * Servlet implementation class DemoServlet
  */
-@WebServlet("/DemoServlet")
+@WebServlet("/ServletVentas")
 public class ServletVentas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,12 +40,12 @@ public class ServletVentas extends HttpServlet {
 		String listar = request.getParameter("Listar");
 		String agregar = request.getParameter("Agregar");
 		if (agregar != null) {
-			agregarUsuario(request, response);
+			agregarventa(request, response);
 
 		}
 		if (listar != null) {
 			try {
-				listarUsuarios(request, response);
+				listarVentas(request, response);
 			} catch (ParseException | ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,16 +61,18 @@ public class ServletVentas extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	public void agregarUsuario(HttpServletRequest request, HttpServletResponse response) {
-		Usuarios2 usuario = new Usuarios2();
-		usuario.setNombre_usuario(request.getParameter("nombre"));
-		usuario.setCedula_usuario(Long.parseLong(request.getParameter("cedula")));
-		usuario.setEmail_usuario(request.getParameter("email"));
-		usuario.setUsuario(request.getParameter("usuario"));
-		usuario.setPassword(request.getParameter("password"));
+	public void agregarventa(HttpServletRequest request, HttpServletResponse response) {
+		Ventas venta = new Ventas();
+		
+		
+		venta.setCodigo_venta(Long.parseLong(innerObj.get("codigo_venta").toString()));
+		venta.setIvaventa(Double.parseDouble(innerObj.get("ivaventa").toString()));
+		venta.setTotal_venta(Double.parseDouble(innerObj.get("total_venta").toString()));
+		venta.setValor_venta(Double.parseDouble(innerObj.get("valor_venta").toString()));
+		
 		int respuesta = 0;
 		try{
-			respuesta=TestJSON_Usuarios.postJSON(usuario);
+			respuesta=JSONVentas.postJSON(venta);
 			PrintWriter writer = response.getWriter();
 			if (respuesta == 200) {
 				writer.println(" Registro Agregado!");
@@ -79,10 +85,10 @@ public class ServletVentas extends HttpServlet {
 		};
 	}
 	
-	public void listarUsuarios(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException {
+	public void listarVentas(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException {
 		try {
-			ArrayList<Usuarios2> lista = TestJSON_Usuarios.getJSON();
-			String pagina = "/resultado.jsp";
+			ArrayList<Ventas> lista = JSONVentas.getJSON();
+			String pagina = "/resultadoVentas.jsp";
 			request.setAttribute("lista", lista);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
 			dispatcher.forward(request, response);

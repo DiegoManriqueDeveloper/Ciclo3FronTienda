@@ -9,38 +9,41 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import tiendaFront1.Modelo.Ventas;
 
 
 public class JSONVentas {
 	private static URL url;
 	private static String sitio = "http://localhost:5000/";
 	
-	public static ArrayList<Usuarios2> parsingUsuarios(String json) throws ParseException {
+	public static ArrayList<Ventas> parsingVentas(String json) throws ParseException {
 		JSONParser jsonParser = new JSONParser();
-		ArrayList<Usuarios2> lista = new ArrayList<Usuarios2>();
-		JSONArray usuarios = (JSONArray) jsonParser.parse(json);
-		Iterator i = usuarios.iterator();
+		ArrayList<Ventas> lista = new ArrayList<Ventas>();
+		JSONArray ventas = (JSONArray) jsonParser.parse(json);
+		Iterator i = ventas.iterator();
 		
 		
 		while (i.hasNext()) {
 		JSONObject innerObj = (JSONObject) i.next();
-		Usuarios2 usuario = new Usuarios2();
-		usuario.setCedula_usuario(Long.parseLong(innerObj.get("cedula_usuario").toString()));
-		usuario.setEmail_usuario(innerObj.get("email_usuario").toString());
-		usuario.setNombre_usuario(innerObj.get("nombre_usuario").toString());
-		usuario.setPassword(innerObj.get("password").toString());
-		usuario.setUsuario(innerObj.get("usuario").toString());
-		lista.add(usuario);
+		Ventas venta = new Ventas();
+		venta.setCodigo_venta(Long.parseLong(innerObj.get("codigo_venta").toString()));
+		venta.setIvaventa(Double.parseDouble(innerObj.get("ivaventa").toString()));
+		venta.setTotal_venta(Double.parseDouble(innerObj.get("total_venta").toString()));
+		venta.setValor_venta(Double.parseDouble(innerObj.get("valor_venta").toString()));
+		venta.setFecha_creacion(innerObj.get("fecha_creacion").toString());
+		lista.add(venta);
 		}
 		return lista;
 		}
 	
-	public static ArrayList<Usuarios2> getJSON() throws IOException, ParseException{
-		url = new URL(sitio+"usuarios/listar");
+	public static ArrayList<Ventas> getJSON() throws IOException, ParseException{
+		url = new URL(sitio+"ventas/listar");
 		HttpURLConnection http = (HttpURLConnection)url.openConnection();
 		http.setRequestMethod("GET");
 		http.setRequestProperty("Accept", "application/json");
@@ -50,14 +53,14 @@ public class JSONVentas {
 		for (int i = 0; i<inp.length ; i++) {
 		json += (char)inp[i];
 		}
-		ArrayList<Usuarios2> lista = new ArrayList<Usuarios2>();
-		lista = parsingUsuarios(json);
+		ArrayList<Ventas> lista = new ArrayList<Ventas>();
+		lista = parsingVentas(json);
 		http.disconnect();
 		return lista;
 		}
 	
-	public static int postJSON(Usuarios2 usuario) throws IOException {
-		url = new URL(sitio+"usuarios/guardar");
+	public static int postJSON(Ventas venta) throws IOException {
+		url = new URL(sitio+"ventas/guardar");
 		HttpURLConnection http;
 		http = (HttpURLConnection)url.openConnection();
 		try {
@@ -69,11 +72,11 @@ public class JSONVentas {
 		http.setRequestProperty("Accept", "application/json");
 		http.setRequestProperty("Content-Type", "application/json");
 		String data = "{"
-		+ "\"cedula_usuario\":\""+ usuario.getCedula_usuario()
-		+"\",\"email_usuario\": \""+usuario.getEmail_usuario()
-		+"\",\"nombre_usuario\": \""+usuario.getNombre_usuario()
-		+"\",\"password\":\""+usuario.getPassword()
-		+"\",\"usuario\":\""+usuario.getUsuario()
+		+ "\",codigo_venta\":\""+ venta.getCodigo_venta()
+		+"\",\"ivaventa\": \""+venta.getIvaventa()
+		+"\",\"total_venta\": \""+venta.getTotal_venta()
+		+"\",\"valor_venta\":\""+venta.getValor_venta()
+		+"\",\"fecha_creacion\":\""+venta.getFecha_creacion()
 		+ "\"}";
 		byte[] out = data.getBytes(StandardCharsets.UTF_8);
 		OutputStream stream = http.getOutputStream();

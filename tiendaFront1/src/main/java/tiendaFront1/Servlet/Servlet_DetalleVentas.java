@@ -12,20 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.parser.ParseException;
 
-import tiendaFront1.JSON.JSONDetallesVentas;
-import tiendaFront1.Modelo.DetallesVentas;
+import tiendaFront1.JSON.JSONDetalleVentas;
+import tiendaFront1.Modelo.DetalleVentas;
 
 /**
  * Servlet implementation class DemoServlet
  */
 @WebServlet("/ServletDetallesVentas")
-public class Servlet_DetallesVentas extends HttpServlet {
+public class Servlet_DetalleVentas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Servlet_DetallesVentas() {
+    public Servlet_DetalleVentas() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -61,14 +61,14 @@ public class Servlet_DetallesVentas extends HttpServlet {
 	}
 	
 	public void agregarDetalleVentas(HttpServletRequest request, HttpServletResponse response) {
-		DetallesVentas detalle = new DetallesVentas();
-		detalle.setCodigo_detalle_de_venta(Long.parseLong(request.getParameter("codigoDetalleVenta")));
-		detalle.setCantidad_de_producto(Long.parseLong(request.getParameter("CantidaProducto")));
-		detalle.setCodigo_producto(Long.parseLong(request.getParameter("CodigoProducto")));
-		detalle.setCodigo_venta(Long.parseLong(request.getParameter("CodigoVenta")));
+		DetalleVentas detalle = new DetalleVentas();
+		detalle.setCodigo_detalle_venta(Long.parseLong(request.getParameter("codigoDetalleVenta")));
+		detalle.setCantidad_producto(Long.parseLong(request.getParameter("CantidaProducto")));
+		detalle.setCantidad_producto(Long.parseLong(request.getParameter("CodigoProducto")));
+		detalle.setCodigo_detalle_venta(Long.parseLong(request.getParameter("CodigoVenta")));
 		detalle.setValor_total(Long.parseLong(request.getParameter("ValorTotal")));
 		detalle.setValor_venta(Long.parseLong(request.getParameter("ValorVenta")));
-		detalle.setValor_iva(Long.parseLong(request.getParameter("ValorIva")));
+		detalle.setValoriva(Long.parseLong(request.getParameter("ValorIva")));
 		
 		
 		

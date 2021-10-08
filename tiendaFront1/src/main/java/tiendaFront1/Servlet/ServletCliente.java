@@ -66,7 +66,7 @@ public class ServletCliente extends HttpServlet {
 		cliente.setDireccion_cliente(request.getParameter("direccion"));
 		cliente.setEmail_cliente(request.getParameter("email"));
 		cliente.setNombre_cliente(request.getParameter("nombre"));
-		cliente.setTelefonoCliente(request.getParameter("telefono"));
+		cliente.setTelefono_cliente(request.getParameter("telefono"));
 		
 		int respuesta = 0;
 		try{

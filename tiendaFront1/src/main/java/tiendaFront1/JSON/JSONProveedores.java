@@ -14,33 +14,35 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import tiendaFront1.Modelo.Proveedores;
+
 
 public class JSONProveedores {
 	private static URL url;
 	private static String sitio = "http://localhost:5000/";
 	
-	public static ArrayList<Usuarios2> parsingUsuarios(String json) throws ParseException {
+	public static ArrayList<Proveedores> parsingProveedores(String json) throws ParseException {
 		JSONParser jsonParser = new JSONParser();
-		ArrayList<Usuarios2> lista = new ArrayList<Usuarios2>();
-		JSONArray usuarios = (JSONArray) jsonParser.parse(json);
-		Iterator i = usuarios.iterator();
+		ArrayList<Proveedores> lista = new ArrayList<Proveedores>();
+		JSONArray proveedores = (JSONArray) jsonParser.parse(json);
+		Iterator i = proveedores.iterator();
 		
 		
 		while (i.hasNext()) {
 		JSONObject innerObj = (JSONObject) i.next();
-		Usuarios2 usuario = new Usuarios2();
-		usuario.setCedula_usuario(Long.parseLong(innerObj.get("cedula_usuario").toString()));
-		usuario.setEmail_usuario(innerObj.get("email_usuario").toString());
-		usuario.setNombre_usuario(innerObj.get("nombre_usuario").toString());
-		usuario.setPassword(innerObj.get("password").toString());
-		usuario.setUsuario(innerObj.get("usuario").toString());
-		lista.add(usuario);
+		Proveedores proveedor = new Proveedores();
+		proveedor.setNit_proveedor(Long.parseLong(innerObj.get("nit_proveedor").toString()));
+		proveedor.setCiudad_proveedor(innerObj.get("ciudad_proveedor").toString());
+		proveedor.setDireccion_proveedor(innerObj.get("direccion_proveedor").toString());
+		proveedor.setNombre_proveedor(innerObj.get("nombre_proveedor").toString());
+		proveedor.setTelefono_proveedor(innerObj.get("telefono_proveedor").toString());
+		lista.add(proveedor);
 		}
 		return lista;
 		}
 	
-	public static ArrayList<Usuarios2> getJSON() throws IOException, ParseException{
-		url = new URL(sitio+"usuarios/listar");
+	public static ArrayList<Proveedores> getJSON() throws IOException, ParseException{
+		url = new URL(sitio+"proveedores/listar");
 		HttpURLConnection http = (HttpURLConnection)url.openConnection();
 		http.setRequestMethod("GET");
 		http.setRequestProperty("Accept", "application/json");
@@ -50,14 +52,14 @@ public class JSONProveedores {
 		for (int i = 0; i<inp.length ; i++) {
 		json += (char)inp[i];
 		}
-		ArrayList<Usuarios2> lista = new ArrayList<Usuarios2>();
-		lista = parsingUsuarios(json);
+		ArrayList<Proveedores> lista = new ArrayList<Proveedores>();
+		lista = parsingProveedores(json);
 		http.disconnect();
 		return lista;
 		}
 	
-	public static int postJSON(Usuarios2 usuario) throws IOException {
-		url = new URL(sitio+"usuarios/guardar");
+	public static int postJSON(Proveedores proveedor) throws IOException {
+		url = new URL(sitio+"proveedores/guardar");
 		HttpURLConnection http;
 		http = (HttpURLConnection)url.openConnection();
 		try {
@@ -69,11 +71,11 @@ public class JSONProveedores {
 		http.setRequestProperty("Accept", "application/json");
 		http.setRequestProperty("Content-Type", "application/json");
 		String data = "{"
-		+ "\"cedula_usuario\":\""+ usuario.getCedula_usuario()
-		+"\",\"email_usuario\": \""+usuario.getEmail_usuario()
-		+"\",\"nombre_usuario\": \""+usuario.getNombre_usuario()
-		+"\",\"password\":\""+usuario.getPassword()
-		+"\",\"usuario\":\""+usuario.getUsuario()
+		+ "\"nit_proveedor\":\""+ proveedor.getNit_proveedor()
+		+"\",\"ciudad_proveedor\": \""+proveedor.getCiudad_proveedor()
+		+"\",\"direccion_proveedor\": \""+proveedor.getDireccion_proveedor()
+		+"\",\"nombre_proveedor\":\""+proveedor.getNombre_proveedor()
+		+"\",\"telefono_proveedor\":\""+proveedor.getTelefono_proveedor()
 		+ "\"}";
 		byte[] out = data.getBytes(StandardCharsets.UTF_8);
 		OutputStream stream = http.getOutputStream();

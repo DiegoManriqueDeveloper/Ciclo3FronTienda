@@ -35,7 +35,7 @@ public class JSONCliente {
 		cliente.setDireccion_cliente(innerObj.get("direccion_cliente").toString());
 		cliente.setEmail_cliente(innerObj.get("email_cliente").toString());
 		cliente.setNombre_cliente(innerObj.get("nombre_cliente").toString());
-		cliente.setTelefonoCliente(innerObj.get("telefono_cliente").toString());
+		cliente.setTelefono_cliente(innerObj.get("telefono_cliente").toString());
 		lista.add(cliente);
 		}
 		return lista;
@@ -75,7 +75,7 @@ public class JSONCliente {
 		+"\",\"Diereccion_cliente\": \""+cliente.getDireccion_cliente()
 		+"\",\"setEmail_cliente\": \""+cliente.getEmail_cliente()
 		+"\",\"setNombre_cliente\":\""+cliente.getNombre_cliente()
-		+"\",\"TelefonoCliente\":\""+cliente.getTelefonoCliente()
+		+"\",\"TelefonoCliente\":\""+cliente.getTelefono_cliente()
 		+ "\"}";
 		byte[] out = data.getBytes(StandardCharsets.UTF_8);
 		OutputStream stream = http.getOutputStream();

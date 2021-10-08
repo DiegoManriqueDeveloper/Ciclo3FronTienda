@@ -12,10 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.parser.ParseException;
 
+import tiendaFront1.JSON.JSONProveedores;
+import tiendaFront1.Modelo.Proveedores;
+
 /**
  * Servlet implementation class DemoServlet
  */
-@WebServlet("/DemoServlet")
+@WebServlet("/ServletProveedores")
 public class ServletProveedores extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,12 +39,12 @@ public class ServletProveedores extends HttpServlet {
 		String listar = request.getParameter("Listar");
 		String agregar = request.getParameter("Agregar");
 		if (agregar != null) {
-			agregarUsuario(request, response);
+			agregarProveedor(request, response);
 
 		}
 		if (listar != null) {
 			try {
-				listarUsuarios(request, response);
+				listarProveedor(request, response);
 			} catch (ParseException | ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,16 +60,16 @@ public class ServletProveedores extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	public void agregarUsuario(HttpServletRequest request, HttpServletResponse response) {
-		Usuarios2 usuario = new Usuarios2();
-		usuario.setNombre_usuario(request.getParameter("nombre"));
-		usuario.setCedula_usuario(Long.parseLong(request.getParameter("cedula")));
-		usuario.setEmail_usuario(request.getParameter("email"));
-		usuario.setUsuario(request.getParameter("usuario"));
-		usuario.setPassword(request.getParameter("password"));
+	public void agregarProveedor(HttpServletRequest request, HttpServletResponse response) {
+		Proveedores proveedor = new Proveedores();
+		proveedor.setNit_proveedor(Long.parseLong(innerObj.get("nit_proveedor").toString()));
+		proveedor.setCiudad_proveedor(innerObj.get("ciudad_proveedor").toString());
+		proveedor.setDireccion_proveedor(innerObj.get("direccion_proveedor").toString());
+		proveedor.setNombre_proveedor(innerObj.get("nombre_proveedor").toString());
+		proveedor.setTelefono_proveedor(innerObj.get("telefono_proveedor").toString());
 		int respuesta = 0;
 		try{
-			respuesta=JSONProveedores.postJSON(usuario);
+			respuesta=JSONProveedores.postJSON(proveedor);
 			PrintWriter writer = response.getWriter();
 			if (respuesta == 200) {
 				writer.println(" Registro Agregado!");
@@ -79,10 +82,10 @@ public class ServletProveedores extends HttpServlet {
 		};
 	}
 	
-	public void listarUsuarios(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException {
+	public void listarProveedor(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException {
 		try {
-			ArrayList<Usuarios2> lista = JSONProveedores.getJSON();
-			String pagina = "/resultado.jsp";
+			ArrayList<Proveedores> lista = JSONProveedores.getJSON();
+			String pagina = "/resultadoProveedores.jsp";
 			request.setAttribute("lista", lista);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
 			dispatcher.forward(request, response);
