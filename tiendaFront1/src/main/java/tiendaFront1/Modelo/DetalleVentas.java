@@ -38,11 +38,12 @@ public class DetalleVentas
 		this.codigo_detalle_venta = codigo_detalle_venta;
 	}
 	
+	
 	public int getCantidad_producto() {
 		return cantidad_producto;
 	}
-	public void setCantidad_producto(long l) {
-		this.cantidad_producto = l;
+	public void setCantidad_producto(int cantidad_producto) {
+		this.cantidad_producto = cantidad_producto;
 	}
 	public double getValor_total() {
 		return valor_total;

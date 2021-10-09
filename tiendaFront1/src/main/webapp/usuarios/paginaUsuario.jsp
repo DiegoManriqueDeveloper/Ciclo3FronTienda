@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Tienda Generica</title>
+<link rel="STYLESHEET" type="text/css" href="Estilos_tienda.css"> 
 </head>
 <body>
 	<p align="center"> CREACION DE USUARIOS</p>

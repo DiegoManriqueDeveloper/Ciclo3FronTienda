@@ -37,10 +37,10 @@ public class JSONDetalleVentas {
 		detalleVenta.setCodigo_detalle_venta(long.parselong(innerObj.get("codigoDetalleVenta").toString()));
 		detalleVenta.setCantidad_de_producto(int.parseint(innerObj.get("cantidadProducto").toString()));
 		detalleVenta.setValor_total(Double.parseDouble(innerObj.get("codigoProducto").toString()));
-		detalleVenta.setCodigo_venta(Long.parseLong(innerObj.get("CodigoVenta").toString()));
+		detalleVenta.setCodigo_detalle_venta(Long.parseLong(innerObj.get("CodigoVenta").toString()));
 		detalleVenta.setValor_total(Long.parseLong(innerObj.get("valorTotal").toString()));
 		detalleVenta.setValor_venta(Long.parseLong(innerObj.get("valorVenta").toString()));
-		detalleVenta.setValor_iva(Long.parseLong(innerObj.get("valorIva").toString()));
+		detalleVenta.setValoriva(Long.parseLong(innerObj.get("valorIva").toString()));
 		lista.add(detalleVenta);
 		
 		}
