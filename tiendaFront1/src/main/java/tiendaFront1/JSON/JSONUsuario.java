@@ -42,7 +42,7 @@ public class JSONUsuario {
 		}
 	
 	public static ArrayList<Usuarios> getJSON() throws IOException, ParseException{
-		url = new URL(sitio+"usuarios/listar");
+		url = new URL(sitio+"usuariosAPI/listar");
 		HttpURLConnection http = (HttpURLConnection)url.openConnection();
 		http.setRequestMethod("GET");
 		http.setRequestProperty("Accept", "application/json");

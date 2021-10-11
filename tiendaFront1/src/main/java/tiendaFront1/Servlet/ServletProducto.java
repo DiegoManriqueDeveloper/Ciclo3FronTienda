@@ -61,7 +61,7 @@ public class ServletProducto extends HttpServlet {
 	
 	public void agregarProducto(HttpServletRequest request, HttpServletResponse response) {
 		Productos producto = new Productos();
-		producto.setCodigo_producto(Long.parseLong(request.getParameter("odigo_producto")));
+		producto.setCodigo_producto(Long.parseLong(request.getParameter("codigo_producto")));
 		producto.setIvacompra(Double.parseDouble(request.getParameter("ivacompra")));
 		producto.setNombre_producto(request.getParameter("nombre_producto"));
 		producto.setPrecio_compra(Double.parseDouble(request.getParameter("precio_compra")));

@@ -34,8 +34,8 @@ public class JSONDetalleVentas {
 		JSONObject innerObj = (JSONObject) i.next();
 		DetalleVentas detalleVenta = new DetalleVentas();
 		
-		detalleVenta.setCodigo_detalle_venta(long.parselong(innerObj.get("codigoDetalleVenta").toString()));
-		detalleVenta.setCantidad_de_producto(int.parseint(innerObj.get("cantidadProducto").toString()));
+		//detalleVenta.setCodigo_detalle_venta(long.class(innerObj.get("detalleVenta").toString())); // tiene error en la transcripcion parseint y parcelong
+		//detalleVenta.setCantidad_de_producto(int.parseint(innerObj.get("cantidadProducto").toString()));
 		detalleVenta.setValor_total(Double.parseDouble(innerObj.get("codigoProducto").toString()));
 		detalleVenta.setCodigo_detalle_venta(Long.parseLong(innerObj.get("CodigoVenta").toString()));
 		detalleVenta.setValor_total(Long.parseLong(innerObj.get("valorTotal").toString()));

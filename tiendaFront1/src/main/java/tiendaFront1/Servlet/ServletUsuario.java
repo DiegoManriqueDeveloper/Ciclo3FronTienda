@@ -116,6 +116,8 @@ System.out.println("aqui va");
 			}
 			if (respuesta == 0) {
 				PrintWriter writer = response.getWriter();
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+				System.out.println("no se encontro usuario");
 				writer.println(" error de usuario");
 			}
 					

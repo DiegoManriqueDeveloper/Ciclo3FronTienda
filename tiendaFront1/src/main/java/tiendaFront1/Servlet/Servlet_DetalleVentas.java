@@ -62,9 +62,8 @@ public class Servlet_DetalleVentas extends HttpServlet {
 	
 	public void agregarDetalleVentas(HttpServletRequest request, HttpServletResponse response) {
 		DetalleVentas detalle = new DetalleVentas();
-		detalle.setCodigo_detalle_venta(Long.parseLong(request.getParameter("codigoDetalleVenta")));
-		detalle.setCantidad_producto(Long.parseLong(request.getParameter("CantidaProducto")));
-		detalle.setCantidad_producto(Long.parseLong(request.getParameter("CodigoProducto")));
+		//detalle.setCodigo_detalle_venta(int.parseint(request.getParameter("codigoDetalleVenta")));
+		//detalle.setCantidad_producto(Long.parseLong(request.getParameter("CantidaProducto")));
 		detalle.setCodigo_detalle_venta(Long.parseLong(request.getParameter("CodigoVenta")));
 		detalle.setValor_total(Long.parseLong(request.getParameter("ValorTotal")));
 		detalle.setValor_venta(Long.parseLong(request.getParameter("ValorVenta")));
@@ -75,7 +74,7 @@ public class Servlet_DetalleVentas extends HttpServlet {
 		
 		int respuesta = 0;
 		try{
-			respuesta=JSONDetallesVentas.postJSON(detalle);
+			respuesta=JSONDetalleVentas.postJSON(detalle);
 			PrintWriter writer = response.getWriter();
 			if (respuesta == 200) {
 				writer.println(" Registro Agregado!");
@@ -90,7 +89,7 @@ public class Servlet_DetalleVentas extends HttpServlet {
 	
 	public void listarDetalleVentas(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException {
 		try {
-			ArrayList<DetallesVentas> lista = JSONDetallesVentas.getJSON();
+			ArrayList<DetalleVentas> lista = JSONDetalleVentas.getJSON();
 			String pagina = "/resultadoDetallesVentas.jsp";
 			request.setAttribute("lista", lista);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);

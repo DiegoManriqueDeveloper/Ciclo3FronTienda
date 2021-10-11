@@ -32,7 +32,7 @@ public class JSONProducto {
 		while (i.hasNext()) {
 		JSONObject innerObj = (JSONObject) i.next();
 		Productos producto = new Productos();
-		producto.setCodigo_producto(long.parselong(innerObj.get("codigo_producto").toString()));
+		//producto.setCodigo_producto(long.parselong(innerObj.get("codigo_producto").toString()));
 		producto.setIvacompra(Double.parseDouble(innerObj.get("ivaCompra").toString()));
 		producto.setNombre_producto(innerObj.get("nombre_producto").toString());
 		producto.setPrecio_compra(Double.parseDouble(innerObj.get("precio_compra").toString()));

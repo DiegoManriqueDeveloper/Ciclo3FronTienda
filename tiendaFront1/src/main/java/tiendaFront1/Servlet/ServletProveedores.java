@@ -62,11 +62,12 @@ public class ServletProveedores extends HttpServlet {
 	
 	public void agregarProveedor(HttpServletRequest request, HttpServletResponse response) {
 		Proveedores proveedor = new Proveedores();
-		proveedor.setNit_proveedor(Long.parseLong(innerObj.get("nit_proveedor").toString()));
-		proveedor.setCiudad_proveedor(innerObj.get("ciudad_proveedor").toString());
-		proveedor.setDireccion_proveedor(innerObj.get("direccion_proveedor").toString());
-		proveedor.setNombre_proveedor(innerObj.get("nombre_proveedor").toString());
-		proveedor.setTelefono_proveedor(innerObj.get("telefono_proveedor").toString());
+		
+		proveedor.setNit_proveedor(Long.parseLong(request.getParameter("nitProveedor")));
+		proveedor.setCiudad_proveedor(request.getParameter("ciudadproveedor"));
+		proveedor.setDireccion_proveedor(request.getParameter("direccionProveedor"));
+		proveedor.setNombre_proveedor(request.getParameter("nombreProvedor"));
+		proveedor.setTelefono_proveedor(request.getParameter("telefonoProvedor"));
 		int respuesta = 0;
 		try{
 			respuesta=JSONProveedores.postJSON(proveedor);

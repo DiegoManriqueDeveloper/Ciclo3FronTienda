@@ -9,7 +9,7 @@
 </head>
 <body>
 	<p align="center"> CREACION DE USUARIOS</p>
-	<form method="get" action="./UsuarioServlet/">
+	<form method="get" action="ServletUsuario">
 		<table>
 			<tr>
 				<td><label>Cedula:</label></td>
